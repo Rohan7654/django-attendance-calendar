@@ -1,0 +1,368 @@
+/*
+ * Django Attendance Calendar - Base Styles
+ * Core styling for the attendance calendar widget
+ */
+
+/* CSS Variables */
+.attendance-calendar {
+  --cal-width: 400px;
+  --cal-cell-size: 40px;
+  --cal-dot-size: 6px;
+  --cal-dot-gap: 2px;
+  --cal-font-size: 14px;
+  --cal-font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --cal-gap: 4px;
+  --cal-padding: 16px;
+  --cal-border-radius: 12px;
+  --cal-transition: all 0.2s ease;
+
+  /* Light theme defaults */
+  --cal-bg: #ffffff;
+  --cal-bg-secondary: #f8fafc;
+  --cal-text: #1e293b;
+  --cal-text-muted: #64748b;
+  --cal-text-disabled: #cbd5e1;
+  --cal-border: #e2e8f0;
+  --cal-hover-bg: #f1f5f9;
+  --cal-today-border: #3b82f6;
+  --cal-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Container */
+.attendance-calendar {
+  font-family: var(--cal-font-family);
+  font-size: var(--cal-font-size);
+  width: var(--cal-width);
+  max-width: 100%;
+  background: var(--cal-bg);
+  border-radius: var(--cal-border-radius);
+  padding: var(--cal-padding);
+  box-shadow: var(--cal-shadow);
+  color: var(--cal-text);
+  box-sizing: border-box;
+}
+
+.attendance-calendar *,
+.attendance-calendar *::before,
+.attendance-calendar *::after {
+  box-sizing: border-box;
+}
+
+/* Size variants */
+.attendance-calendar.size-mini {
+  --cal-width: 180px;
+  --cal-cell-size: 22px;
+  --cal-font-size: 10px;
+  --cal-dot-size: 4px;
+  --cal-padding: 8px;
+  --cal-gap: 2px;
+}
+
+.attendance-calendar.size-compact {
+  --cal-width: 280px;
+  --cal-cell-size: 32px;
+  --cal-font-size: 12px;
+  --cal-dot-size: 5px;
+  --cal-padding: 12px;
+  --cal-gap: 3px;
+}
+
+.attendance-calendar.size-medium {
+  --cal-width: 400px;
+  --cal-cell-size: 40px;
+  --cal-font-size: 14px;
+  --cal-dot-size: 6px;
+}
+
+.attendance-calendar.size-large {
+  --cal-width: 100%;
+  --cal-cell-size: 48px;
+  --cal-font-size: 16px;
+  --cal-dot-size: 8px;
+  --cal-padding: 20px;
+}
+
+/* Header */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cal-border);
+}
+
+.cal-title {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--cal-text);
+  margin: 0;
+}
+
+.cal-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.cal-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--cal-border);
+  background: var(--cal-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--cal-text);
+  transition: var(--cal-transition);
+}
+
+.cal-nav-btn:hover {
+  background: var(--cal-hover-bg);
+  border-color: var(--cal-today-border);
+}
+
+.cal-nav-btn:focus {
+  outline: 2px solid var(--cal-today-border);
+  outline-offset: 2px;
+}
+
+.cal-nav-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Weekday headers */
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--cal-gap);
+  margin-bottom: 8px;
+}
+
+.cal-weekday {
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--cal-text-muted);
+  padding: 4px 0;
+}
+
+/* Calendar grid */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--cal-gap);
+  /* Fixed height for 6 rows to prevent jumping when navigating months */
+  min-height: calc((var(--cal-cell-size) + var(--cal-gap)) * 6);
+}
+
+/* Day cell */
+.cal-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--cal-cell-size);
+  height: var(--cal-cell-size);
+  border-radius: 8px;
+  cursor: default;
+  transition: var(--cal-transition);
+  background: transparent;
+}
+
+.cal-day.current-month:hover {
+  background: var(--cal-hover-bg);
+  transform: scale(1.05);
+}
+
+.cal-day.other-month {
+  color: var(--cal-text-disabled);
+}
+
+.cal-day.today {
+  border: 2px solid var(--cal-today-border);
+  font-weight: 600;
+}
+
+/* Day number */
+.cal-day-number {
+  font-size: 1em;
+  line-height: 1;
+  z-index: 2;
+}
+
+/* Avatar overlay */
+.cal-day-avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  filter: blur(0.5px);
+}
+
+/* Status dot */
+.cal-status-dot {
+  position: absolute;
+  bottom: var(--cal-dot-gap);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--cal-dot-size);
+  height: var(--cal-dot-size);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+/* Tooltip */
+.cal-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background: var(--cal-text);
+  color: var(--cal-bg);
+  font-size: 0.75em;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--cal-transition);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cal-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--cal-text);
+}
+
+.cal-day:hover .cal-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Legend */
+.cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--cal-border);
+}
+
+.cal-legend.position-top {
+  order: -1;
+  padding-top: 0;
+  padding-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  border-top: none;
+  border-bottom: 1px solid var(--cal-border);
+}
+
+.cal-legend.position-left,
+.cal-legend.position-right {
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85em;
+  color: var(--cal-text-muted);
+}
+
+.cal-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Export buttons */
+.cal-export {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cal-border);
+}
+
+.cal-export-btn {
+  padding: 6px 12px;
+  font-size: 0.8em;
+  border: 1px solid var(--cal-border);
+  background: var(--cal-bg);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--cal-text-muted);
+  transition: var(--cal-transition);
+}
+
+.cal-export-btn:hover {
+  background: var(--cal-hover-bg);
+  color: var(--cal-text);
+}
+
+/* Layout with side legend */
+.attendance-calendar.legend-left,
+.attendance-calendar.legend-right {
+  display: flex;
+  gap: 16px;
+}
+
+.attendance-calendar.legend-left {
+  flex-direction: row-reverse;
+}
+
+.attendance-calendar.legend-left .cal-main,
+.attendance-calendar.legend-right .cal-main {
+  flex: 1;
+}
+
+/* Accessibility */
+.cal-day:focus {
+  outline: 2px solid var(--cal-today-border);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .attendance-calendar,
+  .attendance-calendar * {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .attendance-calendar {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .cal-nav,
+  .cal-export {
+    display: none;
+  }
+}

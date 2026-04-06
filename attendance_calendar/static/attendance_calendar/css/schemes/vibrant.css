@@ -1,0 +1,10 @@
+/*
+ * Django Attendance Calendar - Vibrant Color Scheme
+ */
+
+.attendance-calendar.scheme-vibrant .status-present { background-color: #00ff88; }
+.attendance-calendar.scheme-vibrant .status-absent { background-color: #ff3366; }
+.attendance-calendar.scheme-vibrant .status-late { background-color: #ffaa00; }
+.attendance-calendar.scheme-vibrant .status-half_day { background-color: #ffdd00; }
+.attendance-calendar.scheme-vibrant .status-holiday { background-color: #0088ff; }
+.attendance-calendar.scheme-vibrant .status-leave { background-color: #aa00ff; }

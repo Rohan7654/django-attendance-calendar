@@ -1,0 +1,149 @@
+/**
+ * Dashboard Styles
+ * Multi-person attendance view
+ */
+
+.attendance-dashboard {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  padding: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.dashboard-summary {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.summary-stat {
+  text-align: center;
+}
+
+.summary-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.summary-label {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.dashboard-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.dashboard-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.employee-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.employee-name {
+  display: block;
+  font-weight: 600;
+}
+
+.employee-dept {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.cal-weekdays-mini {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.625rem;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.cal-grid-mini {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  font-size: 0.625rem;
+}
+
+.cal-day-mini.other {
+  opacity: 0.3;
+}
+
+.cal-dot-mini {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.cal-day-num {
+  color: #64748b;
+}
+
+/* Dark theme */
+.attendance-dashboard.theme-dark {
+  color: #e2e8f0;
+}
+
+.attendance-dashboard.theme-dark .dashboard-summary {
+  background: rgba(45, 45, 66, 0.8);
+}
+
+.attendance-dashboard.theme-dark .dashboard-card {
+  background: rgba(30, 30, 46, 0.95);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.attendance-dashboard.theme-dark .summary-value {
+  color: #e2e8f0;
+}
+
+.attendance-dashboard.theme-dark .summary-label,
+.attendance-dashboard.theme-dark .employee-dept,
+.attendance-dashboard.theme-dark .cal-weekdays-mini,
+.attendance-dashboard.theme-dark .cal-day-num {
+  color: #94a3b8;
+}

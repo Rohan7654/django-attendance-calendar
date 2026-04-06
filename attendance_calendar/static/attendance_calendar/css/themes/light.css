@@ -1,0 +1,15 @@
+/*
+ * Django Attendance Calendar - Light Theme
+ */
+
+.attendance-calendar.theme-light {
+    --cal-bg: #ffffff;
+    --cal-bg-secondary: #f8fafc;
+    --cal-text: #1e293b;
+    --cal-text-muted: #64748b;
+    --cal-text-disabled: #cbd5e1;
+    --cal-border: #e2e8f0;
+    --cal-hover-bg: #f1f5f9;
+    --cal-today-border: #3b82f6;
+    --cal-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}

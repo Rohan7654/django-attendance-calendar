@@ -1,0 +1,92 @@
+{% load static attendance_tags %}
+
+<div class="attendance-calendar theme-{{ theme }} size-{{ size }} scheme-{{ color_scheme }}{% if legend_position == 'left' or legend_position == 'right' %} legend-{{ legend_position }}{% endif %} {{ css_class }}" data-year="{{ calendar.year }}" data-month="{{ calendar.month }}" data-first-day="{{ calendar.first_day }}">
+    
+    {% if legend_position == 'left' or legend_position == 'right' %}
+    <div class="cal-main">
+    {% endif %}
+    
+    <div class="cal-header">
+        <h2 class="cal-title">{{ calendar.month_name }} {{ calendar.year }}</h2>
+        {% if show_month_nav %}
+        <div class="cal-nav">
+            <button type="button" class="cal-nav-btn cal-nav-prev" aria-label="Previous month">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button type="button" class="cal-nav-btn cal-nav-next" aria-label="Next month">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% if show_legend and legend_position == 'top' %}
+    <div class="cal-legend position-top">
+        {% for item in legend_items %}
+        <div class="cal-legend-item">
+            <span class="cal-legend-dot" style="background-color: {{ item.color }};"></span>
+            <span class="cal-legend-label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="cal-weekdays">
+        {% for day in calendar.weekdays %}
+        <div class="cal-weekday">{{ day }}</div>
+        {% endfor %}
+    </div>
+    
+    <div class="cal-grid">
+        {% for week in calendar.weeks %}
+            {% for day in week %}
+            <div class="cal-day {% if day.current_month %}current-month{% else %}other-month{% endif %}{% if day.is_today and highlight_today %} today{% endif %}" data-date="{{ day.date }}"{% if day.status %} data-status="{{ day.status }}"{% endif %}{% if day.note %} data-note="{{ day.note }}"{% endif %}>
+                {% if show_avatar and day.avatar %}
+                <div class="cal-day-avatar" style="background-image: url('{{ day.avatar }}'); opacity: {{ avatar_opacity }};"></div>
+                {% endif %}
+                <span class="cal-day-number">{{ day.day }}</span>
+                {% if day.status and day.current_month %}
+                <span class="cal-status-dot status-{{ day.status }}"></span>
+                {% endif %}
+                {% if show_tooltips and day.current_month and day.status %}
+                <div class="cal-tooltip">{{ day.date }}{% if day.note %}: {{ day.note }}{% endif %}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    
+    {% if show_legend and legend_position == 'bottom' %}
+    <div class="cal-legend position-bottom">
+        {% for item in legend_items %}
+        <div class="cal-legend-item">
+            <span class="cal-legend-dot" style="background-color: {{ item.color }};"></span>
+            <span class="cal-legend-label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if show_export %}
+    <div class="cal-export">
+        {% for format in export_formats %}
+        <button type="button" class="cal-export-btn" data-format="{{ format }}">{{ format|upper }}</button>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if legend_position == 'left' or legend_position == 'right' %}
+    </div>
+    {% if show_legend %}
+    <div class="cal-legend position-{{ legend_position }}">
+        {% for item in legend_items %}
+        <div class="cal-legend-item">
+            <span class="cal-legend-dot" style="background-color: {{ item.color }};"></span>
+            <span class="cal-legend-label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+

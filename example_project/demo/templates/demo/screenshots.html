@@ -1,0 +1,111 @@
+{% load static attendance_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshots - Django Attendance Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/themes/light.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/themes/dark.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/default.css' %}">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            padding: 40px;
+        }
+        .screenshot-section {
+            margin-bottom: 60px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .row {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .variant-label {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .dark-bg {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            padding: 30px;
+            border-radius: 20px;
+        }
+        .dark-bg .section-title {
+            color: #e2e8f0;
+            border-bottom-color: #3d3d5c;
+        }
+        .dark-bg .variant-label {
+            color: #94a3b8;
+        }
+        .dashboard-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Light Theme Variants -->
+    <div class="screenshot-section">
+        <h2 class="section-title">Light Theme - Size Variants</h2>
+        <div class="row">
+            <div>
+                <div class="variant-label">Mini (180px)</div>
+                {% attendance_calendar attendance_data theme="light" size="mini" show_legend=True year=2024 month=10 %}
+            </div>
+            <div>
+                <div class="variant-label">Compact (280px)</div>
+                {% attendance_calendar attendance_data theme="light" size="compact" show_legend=True year=2024 month=10 %}
+            </div>
+            <div>
+                <div class="variant-label">Medium (400px)</div>
+                {% attendance_calendar attendance_data theme="light" size="medium" show_legend=True year=2024 month=10 %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark Theme Variants -->
+    <div class="screenshot-section dark-bg">
+        <h2 class="section-title">Dark Theme - Size Variants</h2>
+        <div class="row">
+            <div>
+                <div class="variant-label">Mini (180px)</div>
+                {% attendance_calendar attendance_data theme="dark" size="mini" show_legend=True year=2024 month=10 %}
+            </div>
+            <div>
+                <div class="variant-label">Compact (280px)</div>
+                {% attendance_calendar attendance_data theme="dark" size="compact" show_legend=True year=2024 month=10 %}
+            </div>
+            <div>
+                <div class="variant-label">Medium (400px)</div>
+                {% attendance_calendar attendance_data theme="dark" size="medium" show_legend=True year=2024 month=10 %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div class="screenshot-section dashboard-section">
+        <h2 class="section-title">Multi-Person Dashboard</h2>
+        {% attendance_dashboard dashboard_data theme="light" columns=3 show_summary=True %}
+    </div>
+
+    <script src="{% static 'attendance_calendar/js/calendar.js' %}"></script>
+</body>
+</html>

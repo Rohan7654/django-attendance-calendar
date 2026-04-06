@@ -1,0 +1,62 @@
+{% load static attendance_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calendar - Light Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/themes/light.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/default.css' %}">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        .demo-section h2 {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Calendar - Light Theme</h1>
+        
+        <div class="demo-section">
+            <h2>Basic Calendar</h2>
+            {% attendance_calendar attendance_data theme="light" show_legend=True %}
+        </div>
+        
+        <div class="demo-section">
+            <h2>Compact Size</h2>
+            {% attendance_calendar attendance_data theme="light" size="compact" %}
+        </div>
+        
+        <div class="demo-section">
+            <h2>With Export Options</h2>
+            {% attendance_calendar attendance_data theme="light" show_legend=True show_export=True %}
+        </div>
+    </div>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="{% static 'attendance_calendar/js/calendar.js' %}"></script>
+</body>
+</html>

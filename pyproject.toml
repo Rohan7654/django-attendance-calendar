@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-attendance-calendar"
+version = "1.0.0"
+description = "A reusable Django widget for displaying attendance with visual indicators, themes, and responsive layouts"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Rohan", email = "rohanroni2019@gmail.com"}
+]
+keywords = [
+    "django",
+    "attendance",
+    "calendar",
+    "widget",
+    "template-tag"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dependencies = [
+    "Django>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-django",
+    "black",
+    "flake8",
+]
+
+[project.urls]
+Homepage = "https://github.com/Rohan7654/django-attendance-calendar"
+Documentation = "https://github.com/Rohan7654/django-attendance-calendar#readme"
+Repository = "https://github.com/Rohan7654/django-attendance-calendar"
+Issues = "https://github.com/Rohan7654/django-attendance-calendar/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["attendance_calendar*"]
+
+[tool.setuptools.package-data]
+attendance_calendar = [
+    "py.typed",
+    "static/attendance_calendar/css/*.css",
+    "static/attendance_calendar/css/themes/*.css",
+    "static/attendance_calendar/css/schemes/*.css",
+    "static/attendance_calendar/js/*.js",
+    "templates/attendance_calendar/*.html",
+    "templates/attendance_calendar/partials/*.html",
+    "templates/attendance_calendar/admin/*.html",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312', 'py313']
+include = '\.pyi?$'

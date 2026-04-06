@@ -1,0 +1,10 @@
+/*
+ * Django Attendance Calendar - Default Color Scheme
+ */
+
+.attendance-calendar.scheme-default .status-present { background-color: #22c55e; }
+.attendance-calendar.scheme-default .status-absent { background-color: #ef4444; }
+.attendance-calendar.scheme-default .status-late { background-color: #f59e0b; }
+.attendance-calendar.scheme-default .status-half_day { background-color: #eab308; }
+.attendance-calendar.scheme-default .status-holiday { background-color: #3b82f6; }
+.attendance-calendar.scheme-default .status-leave { background-color: #8b5cf6; }

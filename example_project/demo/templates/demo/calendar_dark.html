@@ -1,0 +1,61 @@
+{% load static attendance_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calendar - Dark Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/themes/dark.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/default.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/vibrant.css' %}">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #e2e8f0;
+            margin-bottom: 30px;
+        }
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        .demo-section h2 {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Calendar - Dark Theme</h1>
+        
+        <div class="demo-section">
+            <h2>Dark with Glassmorphism</h2>
+            {% attendance_calendar attendance_data theme="dark" show_legend=True %}
+        </div>
+        
+        <div class="demo-section">
+            <h2>Compact Dark</h2>
+            {% attendance_calendar attendance_data theme="dark" size="compact" %}
+        </div>
+        
+        <div class="demo-section">
+            <h2>Dark with Vibrant Colors</h2>
+            {% attendance_calendar attendance_data theme="dark" color_scheme="vibrant" show_legend=True %}
+        </div>
+    </div>
+    <script src="{% static 'attendance_calendar/js/calendar.js' %}"></script>
+</body>
+</html>

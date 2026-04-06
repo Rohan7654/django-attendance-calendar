@@ -1,0 +1,57 @@
+/*
+ * Django Attendance Calendar - Dark Theme
+ * Features glassmorphism effect
+ */
+
+.attendance-calendar.theme-dark {
+    --cal-bg: rgba(30, 30, 46, 0.95);
+    --cal-bg-secondary: rgba(45, 45, 66, 0.8);
+    --cal-text: #e2e8f0;
+    --cal-text-muted: #94a3b8;
+    --cal-text-disabled: #475569;
+    --cal-border: rgba(148, 163, 184, 0.2);
+    --cal-hover-bg: rgba(148, 163, 184, 0.1);
+    --cal-today-border: #60a5fa;
+    --cal-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--cal-border);
+}
+
+.attendance-calendar.theme-dark .cal-nav-btn {
+    background: var(--cal-bg-secondary);
+    border-color: var(--cal-border);
+}
+
+.attendance-calendar.theme-dark .cal-nav-btn:hover {
+    background: var(--cal-hover-bg);
+}
+
+.attendance-calendar.theme-dark .cal-tooltip {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.attendance-calendar.theme-dark .cal-tooltip::after {
+    border-top-color: #e2e8f0;
+}
+
+/* Auto theme - follows system preference */
+@media (prefers-color-scheme: dark) {
+    .attendance-calendar.theme-auto {
+        --cal-bg: rgba(30, 30, 46, 0.95);
+        --cal-bg-secondary: rgba(45, 45, 66, 0.8);
+        --cal-text: #e2e8f0;
+        --cal-text-muted: #94a3b8;
+        --cal-text-disabled: #475569;
+        --cal-border: rgba(148, 163, 184, 0.2);
+        --cal-hover-bg: rgba(148, 163, 184, 0.1);
+        --cal-today-border: #60a5fa;
+        --cal-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--cal-border);
+    }
+}

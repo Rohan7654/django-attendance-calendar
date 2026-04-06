@@ -1,0 +1,164 @@
+{% load static attendance_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Features Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/themes/light.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/themes/dark.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/default.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/pastel.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/vibrant.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/corporate.css' %}">
+    <link rel="stylesheet" href="{% static 'attendance_calendar/css/schemes/monochrome.css' %}">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: #1e293b;
+        }
+        .feature-card p {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Features Showcase</h1>
+        
+        <div class="feature-grid">
+            <!-- Size Variants -->
+            <div class="feature-card">
+                <h3>Mini Size</h3>
+                <p>Smallest calendar for tight spaces (180px)</p>
+                {% attendance_calendar attendance_data theme="light" size="mini" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Compact Size</h3>
+                <p>Balanced size for dashboards (280px)</p>
+                {% attendance_calendar attendance_data theme="light" size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Medium Size</h3>
+                <p>Default size for standalone use (400px)</p>
+                {% attendance_calendar attendance_data theme="light" size="medium" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Large Size</h3>
+                <p>Full-width responsive calendar (100%)</p>
+                {% attendance_calendar attendance_data theme="light" size="large" show_legend=True year=2024 month=10 %}
+            </div>
+            
+            <!-- Color Schemes -->
+            <div class="feature-card">
+                <h3>Default Color Scheme</h3>
+                <p>Standard colors for attendance statuses</p>
+                {% attendance_calendar attendance_data theme="light" color_scheme="default" show_legend=True size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Pastel Colors</h3>
+                <p>Soft, muted pastel color palette</p>
+                {% attendance_calendar attendance_data theme="light" color_scheme="pastel" show_legend=True size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Vibrant Colors</h3>
+                <p>Bold, high-contrast colors</p>
+                {% attendance_calendar attendance_data theme="light" color_scheme="vibrant" show_legend=True size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Corporate Theme</h3>
+                <p>Professional, business-appropriate colors</p>
+                {% attendance_calendar attendance_data theme="light" color_scheme="corporate" show_legend=True size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card" style="background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);">
+                <h3 style="color: #e2e8f0;">Dark Theme</h3>
+                <p style="color: #94a3b8;">Glassmorphism effect with dark colors</p>
+                {% attendance_calendar attendance_data theme="dark" show_legend=True size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>With Export</h3>
+                <p>Export to PNG, PDF, or CSV</p>
+                {% attendance_calendar attendance_data theme="light" show_export=True size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Legend Positions</h3>
+                <p>Legend at bottom position</p>
+                {% attendance_calendar attendance_data theme="light" show_legend=True legend_position="bottom" size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Monday Start</h3>
+                <p>Week starts on Monday</p>
+                {% attendance_calendar attendance_data theme="light" first_day="monday" size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Avatar Overlay (25%)</h3>
+                <p>Shows user avatar on each day</p>
+                {% attendance_calendar avatar_data theme="light" show_avatar=True avatar_opacity=0.25 size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Avatar Overlay (50%)</h3>
+                <p>Higher opacity avatar display</p>
+                {% attendance_calendar avatar_data theme="light" show_avatar=True avatar_opacity=0.5 size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card" style="background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);">
+                <h3 style="color: #e2e8f0;">Dark + Avatar</h3>
+                <p style="color: #94a3b8;">Avatar overlay with dark theme</p>
+                {% attendance_calendar avatar_data theme="dark" show_avatar=True avatar_opacity=0.3 size="compact" year=2024 month=10 %}
+            </div>
+            
+            <div class="feature-card">
+                <h3>Full Featured</h3>
+                <p>Avatar + Legend + Export</p>
+                {% attendance_calendar avatar_data theme="light" show_avatar=True show_legend=True show_export=True size="compact" year=2024 month=10 %}
+            </div>
+        </div>
+    </div>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="{% static 'attendance_calendar/js/calendar.js' %}"></script>
+</body>
+</html>

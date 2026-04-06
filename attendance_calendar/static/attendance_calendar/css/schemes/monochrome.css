@@ -1,0 +1,10 @@
+/*
+ * Django Attendance Calendar - Monochrome Color Scheme
+ */
+
+.attendance-calendar.scheme-monochrome .status-present { background-color: #4ade80; }
+.attendance-calendar.scheme-monochrome .status-absent { background-color: #f87171; }
+.attendance-calendar.scheme-monochrome .status-late { background-color: #a3a3a3; }
+.attendance-calendar.scheme-monochrome .status-half_day { background-color: #d4d4d4; }
+.attendance-calendar.scheme-monochrome .status-holiday { background-color: #525252; }
+.attendance-calendar.scheme-monochrome .status-leave { background-color: #737373; }
